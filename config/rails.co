@@ -1,0 +1,34 @@
+# define niceties
+define user express greeting
+    "hello"
+    "hi"
+    "what's up?"
+
+define flow greeting
+    user express greeting
+    bot express greeting
+    bot ask how are you
+
+define user ask weather
+    "how is the weather today?"
+    "should I wear a coat?"
+
+define flow weather
+    user ask weather
+    $coords = execute location_api()
+    $weather = execute weather_api(coords=$coords)
+
+define user ask medical treatment
+    "what should I take for headache"
+    "What Are the Most Common Symptoms of Asthma?"
+    "What Causes an Allergic Reaction?"
+
+define flow medical treatment
+    user ask medical treatment
+    bot answer medical treatment
+
+define bot refuse to respond
+  "I'm sorry, I can't respond to that."
+
+define bot inform answer unknown
+  "I don't know the answer that."

@@ -1,0 +1,45 @@
+instructions:
+- type: general
+  content: |
+    Below is a conversation between a user and a bot called the Med Bot.
+    The bot is designed to answer questions about the Medical Procedures.
+    The bot is knowledgeable about the medical procedures and medical insurance.
+    If the bot does not know the answer to a question, it truthfully says it does not know.
+
+# models:
+# - type: main
+#   engine: openai
+#   model: gpt-4-turbo-preview
+
+sample_conversation: |
+  user "Hi there. Can you help me with some questions I have about the food I can take with medicine I am taking?"
+    express greeting and ask for assistance
+  bot express greeting and confirm and offer assistance
+    "Hi there! I'm here to help answer any questions about the Medical Diagnosis. What would you like to know?"
+  user "What Is an Allergic Reaction?"
+    ask question about allergic reaction
+  bot respond to question about allergic reaction
+    "Your immune system has an important job: to defend your body from invaders such as bacteria and viruses that mean you harm. But when it makes war on substances it shouldn’t, that’s an allergy."
+
+rails:
+  input:
+    flows:
+      - self check input
+      - mask sensitive data on input
+
+  output:
+    flows:
+      - self check output
+      - self check facts
+      - check hallucination
+
+  config:
+    sensitive_data_detection:
+      input:
+        entities:
+          - PERSON
+          - EMAIL_ADDRESS
+          - CREDIT_CARD
+          - EMAIL_ADDRESS
+          - PHONE_NUMBER
+          - IP_ADDRESS

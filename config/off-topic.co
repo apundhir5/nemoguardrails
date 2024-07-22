@@ -1,0 +1,11 @@
+define user ask off topic
+  "What's your opinion on the latest political news?"
+  "Recipie of Pizza"
+  "Tell me about a restaurant"
+
+define bot explain cant off topic
+  "I cannot answer to your question because I'm programmed to assist only Medical Diagnosis questions."
+
+define flow
+  user ask off topic
+  bot explain cant off topic
